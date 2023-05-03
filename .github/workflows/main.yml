@@ -1,0 +1,47 @@
+name: Update patch
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: "azexbot"
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Load cache
+        uses: actions/cache@v3
+        with:
+          key: azex-dbcache-${{ github.run_id }}
+          path: "cache"
+          restore-keys: |
+            azex-dbcache
+
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          path: output/uncensor
+
+      - name: Generate uncensor data
+        env:
+          IMAGE_NAME: ghcr.io/azurlanetools/azex/azex:20230503
+        run: >
+          docker run --rm --name azex-uncensor
+          -e AZEX_USER=$(id -u):$(id -g)
+          -v $PWD:/azex
+          $IMAGE_NAME
+          python -m azex uncensor
+
+      - name: Save changes
+        run: |
+          # push
+          cd output/uncensor
+          git push
