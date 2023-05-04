@@ -1,18 +1,21 @@
 # 碧蓝航线 舰娘名称还原补丁
 
-更新时间: 2023-05-04 15:43:47+08:00 ![](data/version.svg) (检查最新版本的时间)
+游戏版本: ![](https://github.com/AzurLaneTools/uncensor/raw/badges/version.svg)
 
-修改时间: 2023-05-04 00:11:33+08:00 (文件发生变化的时间. 若你的下载时间晚于该时间, 需要重新下载)
+检查时间: ![](https://github.com/AzurLaneTools/uncensor/raw/badges/lastRun.svg)
 
-原始`gametip`文件: 大小=`743144`, MD5=`13999044af10800532928f6a452559fd`
+修改时间: ![](https://github.com/AzurLaneTools/uncensor/raw/badges/lastUpdate.svg) (若你的下载时间晚于该时间, 需要重新下载)
 
-处理后的`gametip`文件: 大小=`743944`, MD5=`71958073b29a66c84fec6974b7e6cfc2`
+## 使用方式
+1. 下载
 
-下载: [data/gametip](data/gametip?raw=1)
+    [前往Release页面](https://github.com/AzurLaneTools/uncensor/releases/latest), 确认版本信息并下载`gametip`文件
 
-使用方式: 下载`gametip`, 替换`AssetBundles/sharecfgdata/gametip`即可. 
+    或者 [直接下载](https://github.com/AzurLaneTools/uncensor/releases/latest/download/gametip)
 
-```bash
-adb push gametip /sdcard/Android/data/com.bilibili.azurlane/files/AssetBundles/sharecfgdata/gametip
-```
 
+2. 替换
+
+    ```bash
+    adb push gametip /sdcard/Android/data/com.bilibili.azurlane/files/AssetBundles/sharecfgdata/gametip
+    ```
