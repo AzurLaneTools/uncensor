@@ -32,7 +32,7 @@ jobs:
 
       - name: Generate uncensor data
         env:
-          IMAGE_NAME: ghcr.io/azurlanetools/azex/azex:20230503
+          IMAGE_NAME: ghcr.io/azurlanetools/azex/azex:20230504
         run: >
           docker run --rm --name azex-uncensor
           -e AZEX_USER=$(id -u):$(id -g)
@@ -40,8 +40,33 @@ jobs:
           $IMAGE_NAME
           python -m azex uncensor
 
+      - name: Update badges
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          BRANCH: badges
+          FOLDER: output/uncensor/badges
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_NAME: bot
+          COMMIT_EMAIL: bot@github.com
+          MESSAGE: update badges
+
       - name: Save changes
+        id: status
         run: |
           # push
           cd output/uncensor
+          cat release/outputs.txt >> "$GITHUB_OUTPUT"
           git push
+          echo commit_id=$(git rev-parse HEAD) >> "$GITHUB_OUTPUT"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ steps.status.outputs.release != '' }}
+        with:
+          tag_name: ${{ steps.status.outputs.release }}
+          body_path: output/uncensor/release/info.md
+          target_commitish: ${{ steps.status.outputs.commit_id }}
+          files: |
+            output/uncensor/release/gametip
+            output/uncensor/data/info.json
