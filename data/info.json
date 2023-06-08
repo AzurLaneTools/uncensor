@@ -1,9 +1,9 @@
 {
-  "createAt": "2023-06-01 11:22:06+08:00",
+  "createAt": "2023-06-08 13:43:48+08:00",
   "name": "sharecfgdata/gametip",
-  "originalMd5": "cd4598da82d112237249f11fefcadd11",
-  "originalSize": 763389,
-  "patchMd5": "3dc9ec6a1ee6fd1c2b3abcd8199cb687",
-  "patchSize": 764189,
-  "version": "6.2.545"
+  "originalMd5": "9245ffccbf727cd497d91f598a1524f0",
+  "originalSize": 764770,
+  "patchMd5": "2d56d1448ceada03d7f2327bb2685a14",
+  "patchSize": 765570,
+  "version": "6.2.560"
 }
