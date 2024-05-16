@@ -1,9 +1,9 @@
 {
-  "createAt": "2024-05-09 11:43:31+08:00",
+  "createAt": "2024-05-16 12:43:29+08:00",
   "name": "sharecfgdata/gametip",
-  "originalMd5": "40c6d41d7236672c66569c0c6ebe1fa5",
-  "originalSize": 889269,
-  "patchMd5": "f25e85d747a4fa4fbcb0f15bee0fe657",
-  "patchSize": 890069,
-  "version": "8.1.40"
+  "originalMd5": "d2742d9876926533d73d1ddbf7e32df1",
+  "originalSize": 889479,
+  "patchMd5": "4b89af30d01caccae694a180def7807b",
+  "patchSize": 890279,
+  "version": "8.1.46"
 }
